@@ -1,0 +1,6 @@
+{
+  "secretKey": "blahblah",
+  "noteTitle": "test/Header Timer Note",
+  "intervalInMs": 5000,
+  "EnableHistoricalList": false
+}
