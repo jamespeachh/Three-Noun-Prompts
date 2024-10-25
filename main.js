@@ -3,8 +3,6 @@ const { Plugin, PluginSettingTab, Setting, Notice  } = require('obsidian');
 // settings
 module.exports = class HeaderTimerPlugin extends Plugin {
   async onload() {
-    console.log('Loading Header Timer Plugin');
-
     this.settings = Object.assign({}, {
       secretKey: '',
       noteTitle: 'Note name with prompts',
@@ -23,7 +21,6 @@ module.exports = class HeaderTimerPlugin extends Plugin {
   }
 
   onunload() {
-    console.log('Unloading Header Timer Plugin');
     if (this.headerInterval) {
       clearInterval(this.headerInterval);
     }
@@ -61,7 +58,6 @@ module.exports = class HeaderTimerPlugin extends Plugin {
         
         // Add historical list if enabled
         if (this.settings.EnableHistoricalList) {
-          console.log("hist");
           newContent = this.updateHistoricalList(newContent, threeWords);
         }
         
