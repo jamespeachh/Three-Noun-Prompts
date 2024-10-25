@@ -6,6 +6,6 @@
     "description": "Use TOPT algorithm to get daily writing prompts!",
     "author": "Jamespeachh",
     "authorUrl": "https://github.com/jamespeachh",
-    "isDesktopOnly": false
+    "isDesktopOnly": true
   }
   
