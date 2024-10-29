@@ -141,7 +141,7 @@ module.exports = class HeaderTimerPlugin extends Plugin {
     let wordList;
     try {
         const wordListJson = await this.app.vault.adapter.read(
-            `${this.app.vault.configDir}/plugins/three-nouns/word-list.json`
+            `${this.app.vault.configDir}/plugins/three-noun-prompts/word-list.json`
         );
         wordList = JSON.parse(wordListJson);
     } catch (error) {
