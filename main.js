@@ -14,8 +14,9 @@ module.exports = class HeaderTimerPlugin extends Plugin {
     
     this.startChangingHeader();
 
-    await this.addRibbonIcon('dice', 'Three Nouns', () => {
+    await this.addRibbonIcon('dice', 'Three Nouns', async () => {
       new Notice('Opening or creating three prompt note!');
+      await this.createOrOpenNote();
       this.startChangingHeader();
     });
   }
