@@ -1,7 +1,29 @@
-# Three-Noun-Prompts
-Get creative writing prompts; share a key with friends to get the same prompt.
-Set timer for prompts in the settings!
+# Three Noun Prompts
+> Desktop only. Cannot use on mobile.
 
 
-# Usage
-To use this plugin, simply edit the title of your note that you will be using, then hit save and apply! Then click the "create or open note" button on the ribbon (die icon), and the note should automatically open.
+---
+
+
+This is a plugin intended to connect you and your friend's notes offline.  
+- Get creative prompts for writing, composing, illustration, or whatever your creative medium is!
+- Set the time increment (in seconds) to allow for different projects or use cases.
+- Get a list of all the previous prompts.
+
+
+### What this plugin does
+- Add ribbon button that creates/opens the prompt note.
+### How to use
+**FOR BEST PERFORMANCE, YOUR KEY SHOULD BE 6-9 CHARACTERS LONG**
+#### Steps to get started
+1. **Go to** `settings` > `community plugins` > `Three Noun Prompts` > `settings`(cog wheel icon)
+2. **Create** you're own secret key using **letters only!**
+3. **Set** the note title that you want **updated** with the prompts.
+4. **Set** the interval (seconds) between the prompts **changing**. 
+5. **Save and apply!**
+6. **Click** the die icon on the ribbon on the **left.**
+> If the note does not **automatically** show up, you might have to **create** a note **manually**.  To do so, just **name** the note your title from the **setting** "Note Title"(2).
+1. **Enjoy** your writing prompts!
+
+### Issues
+If you find any issues, bugs, or complaints, please submit them at [this link.](https://github.com/jamespeachh/Three-Noun-Prompts/issues)
