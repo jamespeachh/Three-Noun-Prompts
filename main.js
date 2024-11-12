@@ -1,5 +1,95 @@
 const { Plugin, PluginSettingTab, Setting, Notice  } = require('obsidian');
 
+wordListRaw = [
+  "Abandonment", "Absolution", "Abyss", "Abyssal", "Adversity", "Affinity", "Aftermath",
+  "Agony", "Alchemy", "Allegiance", "Alteration", "Altruism", "Ambiguity", "Amulet",
+  "Anarchy", "Antagonist", "Anthem", "Anticipation", "Antipathy", "Anxiety", "Apocalypse",
+  "Apotheosis", "Arcane", "Archetype", "Ardor", "Artistry", "Ascendance", "Ascent",
+  "Aspiration", "Ashen", "Astral", "Aurora", "Avarice", "Awakening", "Awareness",
+
+  "Balance", "Banishment", "Barriers", "Beacon", "Belief", "Beneath", "Benediction",
+  "Benevolence", "Betrayal", "Bittersweet", "Blight", "Blissful", "Bloodline", "Blossoms",
+  "Boon", "Bravery", "Breach", "Breeze", "Burden", "Burst",
+
+  "Caged", "Calamity", "Calm", "Captivity", "Cascades", "Cataclysm", "Catalyst",
+  "Celestial", "Change", "Chaos", "Charisma", "Charmed", "Chasing", "Chasm", "Childhood",
+  "Chimeras", "Chronicles", "Cipher", "Clarity", "Climactic", "Cloak", "Cloister",
+  "Closure", "Collage", "Companionship", "Compromise", "Compulsion", "Conquest",
+  "Conflict", "Conflicted", "Confusion", "Connection", "Consciousness", "Contemplation",
+  "Contradiction", "Corruption", "Covenant", "Creation", "Creativity", "Crestfallen",
+  "Crisis", "Crossroads", "Crucible", "Cultivation", "Curiosity", "Curse", "Cyclic",
+  "Cynicism",
+
+  "Damned", "Dare", "Daring", "Darkness", "Dauntless", "Decay", "Decisions", "Deception",
+  "Defiance", "Delirium", "Delusion", "Descent", "Desolation", "Detachment",
+  "Determination", "Devotion", "Dichotomy", "Dilemma", "Discovery", "Dissonance", "Dread",
+  "Dreamscape", "Duel", "Dusk",
+
+  "Echoes", "Eclipse", "Eldritch", "Elevation", "Ember", "Embark", "Embrace", "Emissary",
+  "Empathy", "Empowerment", "Endings", "Endless", "Enchantment", "Enigma", "Enlightenment",
+  "Epiphany", "Equilibrium", "Essence", "Eternal", "Eternity", "Eulogy", "Euphoria",
+  "Evasion", "Evocation", "Existence", "Exile", "Exodus", "Experience", "Exploration",
+
+  "Fable", "Façade", "Fabled", "Fallen", "Fantasy", "Fate", "Fear", "Fearless", "Fever",
+  "Fissure", "Flame", "Fleeting", "Flicker", "Focus", "Forsaken", "Fortune", "Fracture",
+  "Fragile", "Fragility", "Fragments", "Freedom", "Frustration", "Fugitive", "Fugue",
+  "Fusion", "Fury",
+
+  "Galaxies", "Gates", "Gaze", "Generations", "Generosity", "Glimmer", "Glimpse", "Glint",
+  "Glory", "Grace", "Gratitude", "Grit", "Grounded", "Guardian", "Grove",
+
+  "Harbinger", "Harmonics", "Harmony", "Haven", "Haunt", "Heartstrings", "Honor", "Hope",
+
+  "Illusion", "Immortality", "Impermanence", "Impostor", "Impression", "Impulse", "Indigo",
+  "Inflection", "Innocence", "Inspiration", "Interconnectedness", "Introspection",
+  "Intuition",
+
+  "Journey",
+
+  "Kaleidoscope",
+
+  "Labyrinth", "Legacy", "Liberation", "Light", "Liminal", "Liminality", "Linger", "Lore",
+
+  "Manifest", "Masquerade", "Merging", "Metamorphosis", "Mirage", "Miracle", "Momentum",
+  "Monolith", "Mosaic", "Mortal", "Mysteries", "Mystic", "Mystique", "Myriad", "Mythos",
+
+  "Nebula", "Nemesis", "Nexus", "Nocturne",
+
+  "Oath", "Oblivion", "Odyssey", "Omens", "Optimism", "Oppression", "Oracle", "Origins",
+  "Outcast",
+
+  "Panic", "Paradigm", "Paradox", "Paragon", "Passage", "Patterns", "Peace", "Penance",
+  "Perception", "Persistence", "Phantom", "Philosophy", "Phoenix", "Pinnacle", "Plight",
+  "Poise", "Portal", "Prelude", "Prism", "Prologue", "Prophecy", "Prowess", "Pursuit",
+
+  "Quasar", "Quest", "Quintessence",
+
+  "Radiance", "Rapture", "Realm", "Rebirth", "Reckoning", "Redemption", "Reflection",
+  "Regeneration", "Release", "Relic", "Remnant", "Resilience", "Resonance", "Retribution",
+  "Reverie", "Rhapsody", "Rhythm", "Rite", "Ritual",
+
+  "Sacrifice", "Saga", "Sanctuary", "Sanctum", "Saturation", "Seeker", "Sentinel",
+  "Serenade", "Serendipity", "Shadow", "Shackle", "Shard", "Sigil", "Silhouette",
+  "Soliloquy", "Solitude", "Sonnet", "Sorrow", "Sparks", "Specter", "Spectrum", "Spire",
+  "Stories", "Strife", "Subtlety", "Symphony", "Synthesis",
+
+  "Tales", "Tempest", "Temptation", "Temporal", "Theater", "Threshold", "Throne", "Tides",
+  "Time", "Titan", "Transcendence", "Transformation", "Transmutation", "Trial",
+  "Tranquility", "Tribute", "Truth", "Turbulence", "Twilight",
+
+  "Ubiquity", "Umbral", "Unity", "Unraveled",
+
+  "Vagabond", "Veil", "Vengeance", "Verdict", "Vestige", "Virtue", "Vision", "Void",
+  "Vortex",
+
+  "Wanderer", "Wanderlust", "Warden", "Whimsy", "Whirlwind", "Whispers", "Wisdom", "Wrath",
+
+  "Yearning",
+
+  "Zen", "Zenith", "Zephyr", "Zealot"
+]
+
+
 // settings
 module.exports = class HeaderTimerPlugin extends Plugin {
   async onload() {
@@ -27,17 +117,13 @@ module.exports = class HeaderTimerPlugin extends Plugin {
     }
   }
 
-  async saveSettings() {
-    await this.saveData(this.settings);
-  }
-
   async createOrOpenNote() {
     const { vault, workspace } = this.app;
     
-    let file = vault.getAbstractFileByPath(this.settings.noteTitle + ".md");
+    let file = vault.getAbstractFileByPath(normalizePath(this.settings.noteTitle + ".md"));
     
     if (!file) {
-      file = await vault.create(this.settings.noteTitle + ".md", "# Initial Header\n");
+      file = await vault.create(normalizePath(this.settings.noteTitle + ".md", "# Initial Header\n"));
     } else {
       const content = await vault.read(file);
       if (!content.startsWith("#")) {
@@ -50,7 +136,7 @@ module.exports = class HeaderTimerPlugin extends Plugin {
 
   startChangingHeader() {
     this.headerInterval = setInterval(async () => {
-      const file = this.app.vault.getAbstractFileByPath(this.settings.noteTitle + ".md");
+      const file = this.app.vault.getAbstractFileByPath(normalizePath(this.settings.noteTitle + ".md"));
       
       if (file) {
         const content = await this.app.vault.read(file);
@@ -141,9 +227,7 @@ module.exports = class HeaderTimerPlugin extends Plugin {
     // Load word list from JSON file
     let wordList;
     try {
-        const wordListJson = await this.app.vault.adapter.read(
-            `${this.app.vault.configDir}/plugins/three-noun-prompts/word-list.json`
-        );
+        const wordListJson = wordListRaw;
         wordList = JSON.parse(wordListJson);
     } catch (error) {
         console.error('Error loading word list:', error);
@@ -172,7 +256,7 @@ class HeaderTimerSettingTab extends PluginSettingTab {
     containerEl.empty();
     
     new Setting(containerEl)
-      .setName('Secret Key')
+      .setName('Secret key')
       .setDesc('Enter the secret key for TOTP generation')
       .addText(text => text
         .setPlaceholder('Enter your secret key')
@@ -183,7 +267,7 @@ class HeaderTimerSettingTab extends PluginSettingTab {
         }));
     
     new Setting(containerEl)
-      .setName('Note Title')
+      .setName('Note title')
       .setDesc('Enter the title of the note to update')
       .addText(text => text
         .setPlaceholder('Header Timer Note')
@@ -194,7 +278,7 @@ class HeaderTimerSettingTab extends PluginSettingTab {
         }));
     
     new Setting(containerEl)
-      .setName('Update Interval')
+      .setName('Update interval')
       .setDesc('Enter the interval in seconds between updates')
       .addText(text => text
         .setPlaceholder('10')
@@ -210,7 +294,7 @@ class HeaderTimerSettingTab extends PluginSettingTab {
         }));
 
     new Setting(containerEl)
-      .setName("Enable Historical List")
+      .setName("Enable historical list")
       .setDesc("Writes a list of all the previous words into a new section at the top of file.")
       .addToggle((toggle) => toggle
         .setValue(this.plugin.settings.EnableHistoricalList)
@@ -219,18 +303,6 @@ class HeaderTimerSettingTab extends PluginSettingTab {
           await this.plugin.saveSettings();
           clearInterval(this.plugin.headerInterval);
           this.plugin.startChangingHeader();
-        }));
-
-    new Setting(containerEl)
-      .setName('Save All Settings')
-      .setDesc('Click to save all settings and apply changes')
-      .addButton((button) => button
-        .setButtonText('Save and Apply')
-        .onClick(async () => {
-          await this.plugin.saveSettings();
-          clearInterval(this.plugin.headerInterval);
-          this.plugin.startChangingHeader();
-          new Notice('All settings saved and applied');
         }));
   }
 }
