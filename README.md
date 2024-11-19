@@ -5,7 +5,7 @@
 ---
 
 
-This is a plugin intended to connect you and your friend's notes offline through random creative writing prompts.    
+This is a plugin intended to generate you and your friend's the same random creative writing prompts.
 - Get creative prompts for writing, composing, illustration, or whatever your creative medium is!
 - Set the time increment (in seconds) to allow for different projects or use cases.
 - Get a list of all the previous prompts.
