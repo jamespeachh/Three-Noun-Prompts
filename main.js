@@ -1,4 +1,4 @@
-const { Plugin, PluginSettingTab, Setting, Notice  } = require('obsidian');
+const { Plugin, PluginSettingTab, Setting, Notice, normalizePath  } = require('obsidian');
 
 wordListRaw = [
   "Abandonment", "Absolution", "Abyss", "Abyssal", "Adversity", "Affinity", "Aftermath",
@@ -221,18 +221,9 @@ module.exports = class HeaderTimerPlugin extends Plugin {
   }
 
   async getThreeWords() {
-    // Generate TOTP code
     const code = await this.generateTOTP();
 
-    // Load word list from JSON file
-    let wordList;
-    try {
-        const wordListJson = wordListRaw;
-        wordList = JSON.parse(wordListJson);
-    } catch (error) {
-        console.error('Error loading word list:', error);
-        return ['Error', 'loading', 'words'];
-    }
+    const wordList = wordListRaw;
 
     const words = [];
     const codeNum = parseInt(code, 10);
