@@ -123,14 +123,16 @@ module.exports = class HeaderTimerPlugin extends Plugin {
     let file = vault.getAbstractFileByPath(normalizePath(this.settings.noteTitle + ".md"));
     
     if (!file) {
-      file = await vault.create(normalizePath(this.settings.noteTitle + ".md", "# Initial Header\n"));
+        file = await vault.create(normalizePath(this.settings.noteTitle + ".md"), "# Initial Header\n");
+        const leaf = workspace.getLeaf(false);
+        await leaf.openFile(file);
     } else {
-      const content = await vault.read(file);
-      if (!content.startsWith("#")) {
-        await vault.modify(file, "# Initial Header\n" + content);
-      }
-      const leaf = workspace.getLeaf(false);
-      await leaf.openFile(file);
+        const content = await vault.read(file);
+        if (!content.startsWith("#")) {
+            await vault.modify(file, "# Initial Header\n" + content);
+        }
+        const leaf = workspace.getLeaf(false);
+        await leaf.openFile(file);
     }
   }
 
