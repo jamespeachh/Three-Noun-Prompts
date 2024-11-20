@@ -5,7 +5,8 @@
 ---
 
 
-This is a plugin intended to generate you and your friend's the same random creative writing prompts.
+This is a plugin intended to generate you and/or your friend's the same random creative writing prompts.
+- While this was designed as a way of connecting multiple peoples prompts algorithmically, this can be used on your own!
 - Get creative prompts for writing, composing, illustration, or whatever your creative medium is!
 - Set the time increment (in seconds) to allow for different projects or use cases.
 - Get a list of all the previous prompts.
@@ -13,12 +14,14 @@ This is a plugin intended to generate you and your friend's the same random crea
 
 ### What this plugin does
 - Add ribbon button that creates/opens the prompt note.
+- Generate three word prompts for creative writing. 
 ### How to use
 **FOR BEST PERFORMANCE, YOUR KEY SHOULD BE 6-9 CHARACTERS LONG**
 #### Steps to get started
 1. **Go to** `settings` > `community plugins` > `Three Noun Prompts` > `settings`(cog wheel icon)
 2. **Create** you're own secret key using **letters only!**
-> This is a seed that the algorithm uses to generate the prompt of the day.  
+> This is a seed that the algorithm uses to generate the prompt of the day.
+> While I have tested out multiple different cases for the secret key, I can not validate everything.  If you do not care about the see, just use `secretkey` or any other random string!
 3. **Set** the note title that you want **updated** with the prompts.
 4. **Set** the interval (seconds) between the prompts **changing**. 
 5. **Save and apply!**
